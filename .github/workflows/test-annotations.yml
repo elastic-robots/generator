@@ -1,0 +1,17 @@
+name: test-annotations
+on: [push, pull_request]
+
+permissions:
+  checks: write
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: yuzutech/annotations-action@v0.4.0
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        title: 'lint'
+        input: ./json-report.json
